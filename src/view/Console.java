@@ -27,7 +27,7 @@ public class Console {
         return reader.nextInt();
     }
 
-    public String getMessage() {
+    public String getResponse() {
         return "";
     }
 }
