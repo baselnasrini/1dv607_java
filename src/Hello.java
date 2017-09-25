@@ -1,5 +1,14 @@
+import controller.ViewController;
+import view.Console;
+import view.helperOptions;
+
+import java.io.IOException;
+
 public class Hello {
     public static void main(String[] args) {
-        System.out.println("Hello, world!");
+        ViewController vC = new ViewController();
+        vC.startProgram();
+
+
     }
 }
