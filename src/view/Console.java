@@ -8,8 +8,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Console {
-    // Console should just print lines. Thinking of following to functions:
-    //helperOptions x = new helperOptions;
+    // Console should just print lines.
 
     // Any logic here is purely UI-related.
 
@@ -26,7 +25,7 @@ public class Console {
                 try {
                     return Integer.valueOf(line);
                 } catch (NumberFormatException n) {
-                    System.out.println("Not a number, please enter the option number");
+                    System.out.println("\nNot a number, please enter the option number\n");
                 }
             }
         }

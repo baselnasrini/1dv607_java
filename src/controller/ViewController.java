@@ -4,18 +4,17 @@ import view.Console;
 import model.helperOptions;
 import model.helperOptions.option;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 
 public class ViewController {
     private int answer;
     private helperOptions helperOptions;
-    Console c_view = new Console();
+    private Console c_view = new Console();
 
     public void startProgram() {
 
-        //initialize the beginning of program
+        //initialize the beginning of program. HelperOptions is a helper class to streamline
+        //the use of all the different options in the flow of our program. See class helperOptions.
         helperOptions = new helperOptions();
 
         // Show introduction text:
@@ -31,7 +30,14 @@ public class ViewController {
         helperOptions.addOptionToList(1, "Member");
         helperOptions.addOptionToList(2, "Boat");
 
-        createStringFromList(helperOptions.getList(), "Which register would you like to use?");
+        // The following creates the string with the options here above and sends it to the Console.
+        // Take a look at the complete function, it is below.
+
+        createStringFromOptionList(helperOptions.getList(), "Which register would you like to use?");
+
+        // Because the variable 'answer' is local, we can use the value as set in 'createStringFromOptionList'
+        // to compare the answers. Based on the user input, we go to either boat or member.
+        // (this can of course be changed as you like.
 
         switch (answer) {
             case 1:
@@ -41,7 +47,7 @@ public class ViewController {
                 actionsBoat();
                 break;
             default:
-                System.out.println("That option doesn't exist.");
+                System.out.println("\nThat option doesn't exist.");
                 whichRegister();
                 break;
         }
@@ -57,7 +63,7 @@ public class ViewController {
         helperOptions.addOptionToList(5, "List all members");
         helperOptions.addOptionToList(6, "Go back");
 
-        createStringFromList(helperOptions.getList(), "Choose an action");
+        createStringFromOptionList(helperOptions.getList(), "Choose an action");
 
         switch (answer) {
             case 1:
@@ -76,13 +82,12 @@ public class ViewController {
                 MemberController.listAllMembers();
                 break;
             case 6:
-                System.out.println("This will go back in 3... 2... 1...");
                 whichRegister();
                 break;
         }
     }
 
-    private void createStringFromList(ArrayList al, String initialMessage) {
+    private void createStringFromOptionList(ArrayList al, String initialMessage) {
         StringBuilder toPrint = new StringBuilder(initialMessage + "\n");
         ArrayList<option> optionsList = helperOptions.getList();
 
