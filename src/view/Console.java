@@ -4,6 +4,7 @@ import model.helperOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Console {
@@ -12,12 +13,23 @@ public class Console {
 
     // Any logic here is purely UI-related.
 
-    public int getOption(String options) throws IOException {
-        Scanner reader = new Scanner(System.in);
+    public int getOption(String options) {
+        Scanner reader;
 
-        System.out.println(options);
-
-        return reader.nextInt();
+        while (true) {
+            System.out.println(options);
+            reader = new Scanner(System.in);
+            String line = reader.nextLine();
+            if (line.equals("quit")) {
+                System.exit(1);
+            } else {
+                try {
+                    return Integer.valueOf(line);
+                } catch (NumberFormatException n) {
+                    System.out.println("Not a number, please enter the option number");
+                }
+            }
+        }
     }
 
     public String getResponse(String question) {
@@ -26,6 +38,11 @@ public class Console {
         System.out.println(question);
 
         return reader.nextLine();
+    }
+
+    public void showWelcomeMessage() {
+        System.out.println("This is a registry for the Yacht Club.");
+        System.out.println("To quit this program, type 'quit' and press enter.\n");
     }
 
 

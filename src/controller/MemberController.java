@@ -3,10 +3,10 @@ package controller;
 import model.Member;
 import view.Console;
 
-public class MemberController {
-    static Console c_view = new Console();
+class MemberController {
+    private static Console c_view = new Console();
 
-    public static void createMember() {
+    static void createMember() {
         String name;
         int idNumber = 0; // Why cant id number be personal Number? PN is unique...
         int personalNumber;
@@ -18,6 +18,37 @@ public class MemberController {
 
         Member newMember = new Member(name, idNumber, personalNumber);
         System.out.println(newMember.toString());
+
+    }
+
+    static void retrieveMember() {
+        // Ask user to enter ID
+        // Get current list from XML
+        // Check for existence.
+            // if exists, print
+            // if not exists, ask again (or cancel)
+    }
+
+    static void updateMember() {
+        // Ask user to enter ID
+        // Get current list from XML
+        // Check for existence.
+        // if exists, ask what to do next (update name or personal number)
+        // if not exists, ask again (or cancel)
+
+    }
+    static void deleteMember() {
+        // Ask user to enter ID
+        // Get current list from XML
+        // Check for existence.
+        // if exists, ask for confirmation
+        // if not exists, ask again (or cancel)
+    }
+
+    static void listAllMembers() {
+        // Ask Verbose / Compact list (or cancel)
+        // Get current list from XML
+        // Print list
 
     }
 }
