@@ -47,7 +47,7 @@ public class ViewController {
                 actionsBoat();
                 break;
             default:
-                System.out.println("\nThat option doesn't exist.");
+                System.out.println("\nThat option doesn't exist."); // SHould be handled in Console
                 whichRegister();
                 break;
         }
@@ -67,19 +67,19 @@ public class ViewController {
 
         switch (answer) {
             case 1:
-                MemberController.createMember();
+                MemberHandler.createMember();
                 break;
             case 2:
-                MemberController.retrieveMember();
+                MemberHandler.retrieveMember();
                 break;
             case 3:
-                MemberController.updateMember();
+                MemberHandler.updateMember();
                 break;
             case 4:
-                MemberController.deleteMember();
+                MemberHandler.deleteMember();
                 break;
             case 5:
-                MemberController.listAllMembers();
+                MemberHandler.listAllMembers();
                 break;
             case 6:
                 whichRegister();

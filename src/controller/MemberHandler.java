@@ -3,7 +3,7 @@ package controller;
 import model.Member;
 import view.Console;
 
-class MemberController {
+class MemberHandler {
     private static Console c_view = new Console();
 
     static void createMember() {
