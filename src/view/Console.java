@@ -45,7 +45,7 @@ public class Console {
     }
 
     public void showErrorMessage(String text) {
-        System.out.println(text);
+        System.err.println(text);
     }
 
 }
