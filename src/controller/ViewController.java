@@ -21,39 +21,10 @@ public class ViewController {
         c_view.showWelcomeMessage();
 
         // start with first question
-        whichRegister();
+        whichAction();
     }
 
-    private void whichRegister() {
-        helperOptions.clearList();
-
-        helperOptions.addOptionToList(1, "Member");
-        helperOptions.addOptionToList(2, "Boat");
-
-        // The following creates the string with the options here above and sends it to the Console.
-        // Take a look at the complete function, it is below.
-
-        createStringFromOptionList(helperOptions.getList(), "Which register would you like to use?");
-
-        // Because the variable 'answer' is local, we can use the value as set in 'createStringFromOptionList'
-        // to compare the answers. Based on the user input, we go to either boat or member.
-        // (this can of course be changed as you like.
-
-        switch (answer) {
-            case 1:
-                actionsMember();
-                break;
-            case 2:
-                actionsBoat();
-                break;
-            default:
-                System.out.println("\nThat option doesn't exist."); // SHould be handled in Console
-                whichRegister();
-                break;
-        }
-    }
-
-    private void actionsMember() {
+    private void whichAction() {
         helperOptions.clearList();
 
         helperOptions.addOptionToList(1, "Create member");
@@ -63,7 +34,14 @@ public class ViewController {
         helperOptions.addOptionToList(5, "List all members");
         helperOptions.addOptionToList(6, "Go back");
 
+        // The following creates the string with the options here above and sends it to the Console.
+        // Take a look at the complete function, it is below.
+
         createStringFromOptionList(helperOptions.getList(), "Choose an action");
+
+        // Because the variable 'answer' is local, we can use the value as set in 'createStringFromOptionList'
+        // to compare the answers. Based on the user input, we go to either boat or member.
+        // (this can of course be changed as you like.
 
         switch (answer) {
             case 1:
@@ -82,7 +60,6 @@ public class ViewController {
                 MemberHandler.listAllMembers();
                 break;
             case 6:
-                whichRegister();
                 break;
         }
     }
