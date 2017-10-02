@@ -10,6 +10,8 @@ public class ViewController {
     private int answer;
     private helperOptions helperOptions;
     private Console c_view = new Console();
+    private MemberHandler memberHandler = new MemberHandler();
+    private BoatHandler boatHandler = new BoatHandler();
 
     public void startProgram() {
 
@@ -32,7 +34,10 @@ public class ViewController {
         helperOptions.addOptionToList(3, "Update member");
         helperOptions.addOptionToList(4, "Delete member");
         helperOptions.addOptionToList(5, "List all members");
-        helperOptions.addOptionToList(6, "Go back");
+        helperOptions.addOptionToList(6, "Register boat");
+        helperOptions.addOptionToList(7, "Update boat info");
+        helperOptions.addOptionToList(8, "Get boat info");
+        helperOptions.addOptionToList(9, "Delete boat");
 
         // The following creates the string with the options here above and sends it to the Console.
         // Take a look at the complete function, it is below.
@@ -45,21 +50,31 @@ public class ViewController {
 
         switch (answer) {
             case 1:
-                MemberHandler.createMember();
+                memberHandler.createMember();
                 break;
             case 2:
-                MemberHandler.retrieveMember();
+                memberHandler.retrieveMember();
                 break;
             case 3:
-                MemberHandler.updateMember();
+                memberHandler.updateMember();
                 break;
             case 4:
-                MemberHandler.deleteMember();
+                memberHandler.deleteMember();
                 break;
             case 5:
-                MemberHandler.listAllMembers();
+                memberHandler.listAllMembers();
                 break;
             case 6:
+                boatHandler.registerBoat();
+                break;
+            case 7:
+                boatHandler.updateBoatInfo();
+                break;
+            case 8:
+                boatHandler.getBoatInfo();
+                break;
+            case 9:
+                boatHandler.deleteBoatInfo();
                 break;
         }
     }

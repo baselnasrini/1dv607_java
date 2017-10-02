@@ -1,5 +1,8 @@
 package model;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 public class DAO {
 
     /*
@@ -11,8 +14,11 @@ public class DAO {
 
      */
 
-    public void writeToFile() {
+    public void writeToFile(Member member) {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson gson = gsonBuilder.create();
 
+        System.out.println(gson.toJson(member));
     }
 
 }
