@@ -12,6 +12,7 @@ public class ViewController {
     private int answer;
     private helperOptions helperOptions;
     private Console c_view = new Console();
+    private MemberHandler memberHandler = new MemberHandler();
 
 
     public void startProgram() {
@@ -50,19 +51,19 @@ public class ViewController {
 
         switch (answer) {
             case 1:
-                MemberHandler.createMember();
+                memberHandler.createMember();
                 break;
             case 2:
-                MemberHandler.retrieveMember();
+                memberHandler.retrieveMember();
                 break;
             case 3:
-                MemberHandler.updateMember();
+                memberHandler.updateMember();
                 break;
             case 4:
-                MemberHandler.deleteMember();
+                memberHandler.deleteMember();
                 break;
             case 5:
-                MemberHandler.listAllMembers();
+                memberHandler.listAllMembers();
                 break;
             case 6:
                 BoatHandler.registerBoat();

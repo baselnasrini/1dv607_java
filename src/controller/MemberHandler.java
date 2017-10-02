@@ -1,27 +1,30 @@
 package controller;
 
 import model.Member;
+import model.DAO;
 import view.Console;
 
-class MemberHandler {
-    private static Console c_view = new Console();
+public class MemberHandler {
+    private Console c_view = new Console();
+    private DAO dao = new DAO();
 
-    static void createMember() {
+    void createMember() {
         String name;
-        int idNumber = 0; // Why cant id number be personal Number? PN is unique...
+        int idNumber; // Why cant id number be personal Number? PN is unique...
         int personalNumber;
 
         name = c_view.getResponse("Name: ");
         personalNumber = Integer.valueOf(c_view.getResponse("\nPersonal number: ")); //WRONG NEEDS BETTER PARSING
-
+        idNumber = personalNumber;
         // NEED A WAY TO STORE A LASTID. Maybe from xml? Need to see how 1DV600 did this.
 
         Member newMember = new Member(name, idNumber, personalNumber);
-        System.out.println(newMember.toString());
+        //System.out.println(newMember.toString());
+        dao.writeToFile(newMember);
 
     }
 
-    static void retrieveMember() {
+    void retrieveMember() {
         // Ask user to enter ID
         // Get current list from XML
         // Check for existence.
@@ -29,7 +32,7 @@ class MemberHandler {
             // if not exists, ask again (or cancel)
     }
 
-    static void updateMember() {
+    void updateMember() {
         // Ask user to enter ID
         // Get current list from XML
         // Check for existence.
@@ -37,7 +40,7 @@ class MemberHandler {
         // if not exists, ask again (or cancel)
 
     }
-    static void deleteMember() {
+    void deleteMember() {
         // Ask user to enter ID
         // Get current list from XML
         // Check for existence.
@@ -45,7 +48,7 @@ class MemberHandler {
         // if not exists, ask again (or cancel)
     }
 
-    static void listAllMembers() {
+    void listAllMembers() {
         // Ask Verbose / Compact list (or cancel)
         // Get current list from XML
         // Print list
