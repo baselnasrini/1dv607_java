@@ -2,8 +2,9 @@ package model;
 
 public class Boat {
 
+    private int ownerPersonalNumber;
     private int length;
-    private BoatType type;
+    private String type; //TODO make this into types
 
     public enum BoatType {
         SAILBOAT, MOTORSAILER, KAYAK, OTHER
@@ -11,7 +12,8 @@ public class Boat {
     }
 
 
-    public Boat(BoatType type, int length) {
+    public Boat(String type, int length, int ownerPersonalNumber ) {
+        this.ownerPersonalNumber = ownerPersonalNumber;
         this.length = length; //length in centimeters
         this.type = type;
     }

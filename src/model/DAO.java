@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DAO {
+    public static ArrayList<Member> arrayList;
 
     /*
     "Controller should be only responsible for changing the state of model layer.
@@ -19,6 +20,23 @@ public class DAO {
     JSON is used here. JAAAAAASOOOOOOOOOOOOOON!!!
 
      */
+
+    public boolean readFromFile() {
+        try (Reader reader = new BufferedReader(new FileReader("Registry.json"))) {
+
+            Gson gson = new Gson();
+            arrayList = gson.fromJson(reader, new TypeToken<ArrayList<Member>>() {}.getType());
+
+            if (arrayList == null) {
+                arrayList = new ArrayList<Member>(2);
+            }
+
+            return true;
+        } catch (IOException f) {
+            f.printStackTrace();
+            return false;
+        }
+    }
 
     public void writeToFile(ArrayList<Member> memberList) {
         try (Writer writer = new FileWriter("Registry.json")) {
@@ -33,30 +51,14 @@ public class DAO {
     }
 
     public boolean writeMemberToFile(Member member) {
-        try (Reader reader = new BufferedReader(new FileReader("Registry.json"))) {
 
+        readFromFile();
 
-            Gson gson = new Gson();
-            Member[] list;
-            list = gson.fromJson(reader, Member[].class);
+        arrayList.add(member);
+        writeToFile(arrayList);
 
-            ArrayList<Member> arrayList;
+        return true;
 
-            if (list != null) {
-                arrayList = new ArrayList<Member>(Arrays.asList(list));
-            } else {
-                arrayList = new ArrayList<Member>(2);
-            }
-
-            arrayList.add(member);
-            System.out.println(arrayList.toString());
-
-            writeToFile(arrayList);
-            return true;
-        } catch (IOException f) {
-            f.printStackTrace();
-            return false;
-        }
     }
 
     public boolean updateMemberInFile(Member member) {

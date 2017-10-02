@@ -44,5 +44,9 @@ public class Console {
         System.out.println("To quit this program, type 'quit' and press enter.\n");
     }
 
+    public void showMessage(String message) {
+        System.out.println(message + "\n");
+    }
+
 
 }
