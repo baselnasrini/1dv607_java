@@ -2,6 +2,12 @@ package model;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DAO {
 
@@ -14,11 +20,51 @@ public class DAO {
 
      */
 
-    public void writeToFile(Member member) {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        Gson gson = gsonBuilder.create();
+    public void writeToFile(ArrayList<Member> memberList) {
+        try (Writer writer = new FileWriter("Registry.json")) {
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            Gson gson = gsonBuilder.create();
 
-        System.out.println(gson.toJson(member));
+            gson.toJson(memberList, writer);
+        }
+        catch (IOException e) {
+            System.err.println("Failed to write JSON");
+        }
+    }
+
+    public boolean writeMemberToFile(Member member) {
+        try (Reader reader = new BufferedReader(new FileReader("Registry.json"))) {
+
+
+            Gson gson = new Gson();
+            Member[] list;
+            list = gson.fromJson(reader, Member[].class);
+
+            ArrayList<Member> arrayList;
+
+            if (list != null) {
+                arrayList = new ArrayList<Member>(Arrays.asList(list));
+            } else {
+                arrayList = new ArrayList<Member>(2);
+            }
+
+            arrayList.add(member);
+            System.out.println(arrayList.toString());
+
+            writeToFile(arrayList);
+            return true;
+        } catch (IOException f) {
+            f.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateMemberInFile(Member member) {
+        return false;
+    }
+
+    public boolean deleteMemberFromFile(Member member) {
+        return false;
     }
 
 }

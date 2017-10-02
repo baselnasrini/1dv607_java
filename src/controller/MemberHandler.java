@@ -1,24 +1,24 @@
 package controller;
 
+import model.DAO;
 import model.Member;
 import view.Console;
 
 class MemberHandler {
     private Console c_view = new Console();
+    private DAO dao = new DAO();
 
     void createMember() {
         String name;
-        int idNumber = 0; // Why cant id number be personal Number? PN is unique...
+        int idNumber; // Why cant id number be personal Number? PN is unique...
         int personalNumber;
 
         name = c_view.getResponse("Name: ");
         personalNumber = Integer.valueOf(c_view.getResponse("\nPersonal number: ")); //WRONG NEEDS BETTER PARSING
-
-        // NEED A WAY TO STORE A LASTID. Maybe from xml? Need to see how 1DV600 did this.
+        idNumber = personalNumber;
 
         Member newMember = new Member(name, idNumber, personalNumber);
-        System.out.println(newMember.toString());
-
+        dao.writeMemberToFile(newMember);
     }
 
     void retrieveMember() {

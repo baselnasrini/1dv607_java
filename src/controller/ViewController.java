@@ -76,6 +76,9 @@ public class ViewController {
             case 9:
                 boatHandler.deleteBoatInfo();
                 break;
+            default:
+                whichAction();
+                break;
         }
     }
 

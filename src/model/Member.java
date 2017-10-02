@@ -13,6 +13,6 @@ public class Member {
 
     @Override
     public String toString() {
-        return this.name + ", " + this.personalNumber;
+        return this.name + ",,, " + this.personalNumber;
     }
 }
